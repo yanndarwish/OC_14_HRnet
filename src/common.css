@@ -1,8 +1,18 @@
+:root {
+    --clr-primary:#216ce7;
+    --clr-bg-dark: #111820;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding:0;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: var(--clr-bg-dark);
+    color:white;
 }
 
 a {
