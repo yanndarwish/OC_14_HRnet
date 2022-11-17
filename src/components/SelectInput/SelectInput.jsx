@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import "./SelectInput.css"
 import "../Input/Input.css"
 
@@ -27,18 +27,18 @@ const SelectInput = ({ label, data }) => {
 		setSelected(value)
 	}
 
-    // close menu if is not focused
+	// close menu if is not focused
 	document.addEventListener("click", () => {
 		const container = document.querySelector("." + label)
-		if (container.classList.contains("show")) {
+		if (container && container.classList.contains("show")) {
 			const input = document.querySelector(`.input-${label}`)
 			const isFocused = document.activeElement === input
 			!isFocused && closeMenu()
 		}
 	})
 
-    // lock the label in the upper left corner when a value is entered
-    // prevents it from taking its original place
+	// lock the label in the upper left corner when a value is entered
+	// prevents it from taking its original place
 	useEffect(() => {
 		selected !== "" &&
 			document.querySelector(`#label-${label}`).classList.add("valid")
@@ -46,10 +46,7 @@ const SelectInput = ({ label, data }) => {
 
 	return (
 		<div className="input-container" onClick={() => toggleMenu()}>
-			<div
-				className={"input selected-input input-" + label}
-				tabIndex="0"
-			>
+			<div className={"input selected-input input-" + label} tabIndex="0">
 				{selected}
 			</div>
 			<label
