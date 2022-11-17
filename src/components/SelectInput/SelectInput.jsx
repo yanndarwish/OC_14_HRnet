@@ -4,7 +4,7 @@ import "../Input/Input.css"
 
 const SelectInput = ({ label, data }) => {
 	const [selected, setSelected] = useState("")
-
+	console.log(data)
 	const toggleMenu = () => {
 		const container = document.querySelector("." + label)
 		if (container.classList.contains("show")) {
@@ -12,7 +12,7 @@ const SelectInput = ({ label, data }) => {
 			container.style.height = "0"
 		} else {
 			container.classList.add("show")
-			container.style.height = `${data.length * 42}px`
+			container.style.height = data.length * 42 <= 300 ? `${data.length * 42}px` : `${300}px`
 		}
 	}
 
@@ -23,7 +23,7 @@ const SelectInput = ({ label, data }) => {
 	}
 
 	const handleClick = (e) => {
-		const value = e.target.getAttribute("value")
+		const value = e.target.innerText
 		setSelected(value)
 	}
 
@@ -61,11 +61,11 @@ const SelectInput = ({ label, data }) => {
 					data.map((option, i) => (
 						<div
 							key={i}
-							value={option}
+							value={typeof option === "object" ? option.abbreviation : option}
 							className="option"
 							onClick={(e) => handleClick(e)}
 						>
-							{option}
+							{typeof option === "object" ? option.name : option}
 						</div>
 					))}
 			</div>
