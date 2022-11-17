@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect} from "react"
 import "./SelectInput.css"
 import "../Input/Input.css"
 
@@ -42,7 +42,7 @@ const SelectInput = ({ label, data }) => {
 	useEffect(() => {
 		selected !== "" &&
 			document.querySelector(`#label-${label}`).classList.add("valid")
-	}, [selected])
+	}, [selected, label])
 
 	return (
 		<div className="input-container" onClick={() => toggleMenu()}>

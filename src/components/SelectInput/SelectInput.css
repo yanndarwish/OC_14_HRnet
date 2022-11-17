@@ -6,6 +6,7 @@
 .selected-input {
 	display: flex;
 	align-items: center;
+    font-size: 14px;
 }
 
 .select-label {
@@ -31,6 +32,7 @@
 	display: flex;
 	align-items: center;
 	padding-left: 32px;
+    font-size:14px;
 }
 
 .option:hover {
