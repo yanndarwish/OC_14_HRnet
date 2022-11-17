@@ -1,0 +1,44 @@
+.input-container {
+    position:relative;
+    height:fit-content
+}
+
+.selected-input {
+	display: flex;
+	align-items: center;
+}
+
+.select-label {
+    pointer-events: none;
+}
+
+.option-container {
+	position: absolute;
+	width: 300px;
+	height: 0px;
+	z-index: 10;
+	overflow: hidden;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-ms-transition: 0.4s;
+	-o-transition: 0.4s;
+    background-color: var(--clr-primary);
+}
+
+.option {
+	height: 42px;
+	display: flex;
+	align-items: center;
+	padding-left: 32px;
+}
+
+.option:hover {
+	filter: brightness(85%);
+	-webkit-filter: brightness(85%);
+}
+
+.valid {
+	translate: -40px -40px !important;
+	scale: 0.875 !important;
+}

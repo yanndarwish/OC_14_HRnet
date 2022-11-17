@@ -6,7 +6,7 @@
     padding:0 24px 0 36px;
     border:none;
     height: 72px;
-    min-width:300px;
+    width:300px;
     color:white;
     border-bottom: 2px solid #2b3442;
     background: var(--clr-bg-dark);
