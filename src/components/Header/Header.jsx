@@ -1,16 +1,17 @@
 import { NavLink, useHref } from "react-router-dom"
+import "./Header.css"
 
 const Header = () => {
     const path = useHref()
 
     return (
-			<header>
+			<header className="header">
 				<div className="brand">HRnet</div>
-				<nav>
+				<nav className="primary-nav">
 					{path === "/" ? (
-						<NavLink to="/employees">Employee List</NavLink>
+						<NavLink to="/employees" className="nav-link">Employee List</NavLink>
 					) : (
-						<NavLink to="/">Home</NavLink>
+						<NavLink to="/" className="nav-link">Home</NavLink>
 					)}
 				</nav>
 			</header>

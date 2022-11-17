@@ -1,0 +1,21 @@
+.header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:48px;
+}
+
+.brand {
+    font-size:56px;
+    font-weight:700;
+}
+
+.nav-link {
+    padding:12px;
+    font-weight:600;
+    background-color: rgb(128, 128, 128, 0.2);
+}
+
+.nav-link:hover {
+    background-color: rgb(128, 128, 128, 0.4);
+}
