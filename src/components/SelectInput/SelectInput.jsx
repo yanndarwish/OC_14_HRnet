@@ -2,9 +2,9 @@ import { useState, useEffect } from "react"
 import "./SelectInput.css"
 import "../Input/Input.css"
 
-const SelectInput = ({ label, data }) => {
+const SelectInput = ({ label, data, onChange }) => {
 	const [selected, setSelected] = useState("")
-	console.log(data)
+
 	const toggleMenu = () => {
 		const container = document.querySelector("." + label)
 		if (container.classList.contains("show")) {
@@ -25,6 +25,7 @@ const SelectInput = ({ label, data }) => {
 	const handleClick = (e) => {
 		const value = e.target.innerText
 		setSelected(value)
+		onChange && onChange(value)
 	}
 
 	// close menu if is not focused

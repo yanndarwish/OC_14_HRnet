@@ -2,7 +2,7 @@ import "./Button.css"
 
 const Button = ({label, onClick}) => {
     return (
-        <button className="button" onClick={(onClick && onClick())}>{label}</button>
+        <button className="button" onClick={e => (onClick && onClick(e))}>{label}</button>
     )
 }
 
