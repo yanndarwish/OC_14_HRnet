@@ -1,26 +1,22 @@
-import { useState, useEffect } from "react"
+import Table from "../../components/Table/Table"
+import { useGetEmployeesQuery } from "../../redux/services/api"
+
 
 const EmployeeList = () => {
-	const [employees, setEmployees] = useState([]) 
+	const { data, error, isLoading } = useGetEmployeesQuery()
 
-	useEffect(() => {
-		const fetchEmployees = async () => {
-			try {
-				const response = await fetch("http://localhost:3000/employees")
-				const data = await response.json()
-				setEmployees(data)
-			} catch (error) {
-				console.error(error)
-			}
-		}
-		fetchEmployees()
-	}, [])
-
-	console.log(employees)
+	console.log(data)
 
 	return (
 		<>
 			<h1 className="main-title">Employee List</h1>
+			{error ? (
+				<>Oh no, there was an error</>
+			) : isLoading ? (
+				<>Loading...</>
+			) : data ? (
+				<Table />
+			) : null}
 		</>
 	)
 }
