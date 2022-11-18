@@ -8,7 +8,7 @@
     height: 72px;
     width:300px;
     color:white;
-    border-bottom: 2px solid #2b3442;
+    border-bottom: 2px solid var(--clr-grey-1);
     background: var(--clr-bg-dark);
 }
 
@@ -27,7 +27,7 @@
     -moz-transition: 0.4s;
     -ms-transition: 0.4s;
     -o-transition: 0.4s;
-    color:#2b3442;
+    color:var(--clr-grey-1);
 }
 
 :is(.input:focus, .input:valid) ~.input-label {
