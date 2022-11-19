@@ -8,7 +8,11 @@ const initialState = {
 export const employeesSlice = createSlice({
 	name: "employees",
 	initialState,
-	reducers: {},
+	reducers: {
+		sortEmployees(state, action) {
+			state.employees = action.payload
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
 			api.endpoints.getEmployees.matchFulfilled,
@@ -19,5 +23,5 @@ export const employeesSlice = createSlice({
 	},
 })
 
-export const { employeeAdded } = employeesSlice.actions
+export const { sortEmployees } = employeesSlice.actions
 export default employeesSlice.reducer
