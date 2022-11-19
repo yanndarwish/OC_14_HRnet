@@ -1,18 +1,18 @@
-import { useState } from "react"
+import { useSelector } from "react-redux"
 import arrow from "../../../assets/sort-arrow.svg"
+import arrowBlue from "../../../assets/sort-arrow-blue.svg"
 
 const TableHeaderCell = ({ attribute, onSorting }) => {
-	const [isSorter, setIsSorter] = useState(false)
+	const sorter = useSelector((state) => state.table.sorter)
 
 	const handleClick = (value) => {
 		onSorting(value)
-		setIsSorter(!isSorter)
 	}
 
 	return (
 		<th
 			value={attribute.value}
-			className="table-header-item"
+			className="table-cell table-header-item"
 			onClick={() => {
 				handleClick(attribute.value)
 			}}
@@ -21,16 +21,16 @@ const TableHeaderCell = ({ attribute, onSorting }) => {
 			<div className="filter-icon-container">
 				<div className="filter-icon">
 					<img
-						src={arrow}
-						alt="sort-arrow"
+						src={sorter === attribute.value ? arrowBlue : arrow}
+						alt="arrow-icon"
 						className="sort-arrow sort-arrow-up"
 					/>
 				</div>
-				{!isSorter && (
+				{sorter !== attribute.value && (
 					<div className="filter-icon">
 						<img
 							src={arrow}
-							alt="sort-arrow"
+							alt="arrow-icon"
 							className="sort-arrow sort-arrow-down"
 						/>
 					</div>
