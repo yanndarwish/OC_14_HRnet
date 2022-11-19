@@ -5,8 +5,6 @@ import { useGetEmployeesQuery } from "../../redux/services/api"
 const EmployeeList = () => {
 	const { data, error, isLoading } = useGetEmployeesQuery()
 
-	console.log(data)
-
 	return (
 		<>
 			<h1 className="main-title">Employee List</h1>
