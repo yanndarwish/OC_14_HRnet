@@ -1,6 +1,6 @@
 .table-header {
     display:table-header-group;
-    background: hsl(212, 31%, 15%);
+    background: hsl(212, 31%, 19%);
 }
 
 .table-row {
@@ -9,15 +9,13 @@
 
 .table-header-item,
 .table-cell {
+    width:100%;
     display:grid;
     grid-template-columns: repeat(9, 1fr);
-    justify-content: space-between;
     align-items: center;
-    max-width:150px;
-    min-width:100px;
+    min-width:130px;
     padding-left:24px;
     padding-block: 6px;;
-    gap:1rem;
 }
 
 .filter-icon {
@@ -38,11 +36,3 @@
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
 }
-
-/* .sort-arrow-down {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-} */
