@@ -18,7 +18,7 @@ const Pager = ({ pageAmount }) => {
 	return (
 		<div className="pager">
 			<button
-				className={currentPage === 1 ? "disabled page-button" : "page-button"}
+				className={currentPage === 1 ? "disabled page-button button" : "page-button button"}
 				value="prev"
 				onClick={(e) => handleClick(e)}
 			>
@@ -27,7 +27,7 @@ const Pager = ({ pageAmount }) => {
 			<span>{currentPage}</span>
 			<button
 				className={
-					currentPage === pageAmount ? "disabled page-button" : "page-button"
+					currentPage === pageAmount ? "disabled page-button button" : "page-button button"
 				}
 				value="next"
 				onClick={(e) => handleClick(e)}

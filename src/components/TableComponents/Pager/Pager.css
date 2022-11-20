@@ -1,4 +1,14 @@
+.pager {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
 .disabled {
-    pointer-events: none;
-    background-color: brown;
+	pointer-events: none;
+	color: var(--clr-grey-1);
+	filter:brightness(80%) ;
+    -webkit-filter:brightness(80%) ;
+	box-shadow: none;
+	background: hsl(212, 31%, 15%);
 }
