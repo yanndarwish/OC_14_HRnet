@@ -116,7 +116,7 @@ const Table = () => {
 	}, [currentPage, entriesPerPage, filteredEmployees])
 
 	return (
-		<div className="table-container">
+		<div className="table-container slide-in three">
 			<div className="table-top">
 				<EntriesFilter onFilter={onFilter} />
 				<Searchbar onSearch={onSearch} />
