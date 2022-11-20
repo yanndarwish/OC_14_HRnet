@@ -1,4 +1,5 @@
 import TableHeaderCell from "../TableHeaderCell/TableHeaderCell"
+import PropTypes from "prop-types"
 import "./TableHeader.css"
 
 const TableHeader = ({ attributes, onSorting }) => {
@@ -19,3 +20,8 @@ const TableHeader = ({ attributes, onSorting }) => {
 }
 
 export default TableHeader
+
+TableHeader.propTypes = {
+	attributes: PropTypes.array.isRequired,
+	onSorting: PropTypes.func.isRequired,
+}

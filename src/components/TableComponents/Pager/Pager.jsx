@@ -1,6 +1,7 @@
-import "./Pager.css"
-import { updateCurrentPage } from "../../../redux/features/tableSlice"
 import { useDispatch, useSelector } from "react-redux"
+import { updateCurrentPage } from "../../../redux/features/tableSlice"
+import PropTypes from "prop-types"
+import "./Pager.css"
 
 
 const Pager = ({ pageAmount }) => {
@@ -39,3 +40,7 @@ const Pager = ({ pageAmount }) => {
 }
 
 export default Pager
+
+Pager.propTypes = {
+	pageAmount: PropTypes.number.isRequired,
+}

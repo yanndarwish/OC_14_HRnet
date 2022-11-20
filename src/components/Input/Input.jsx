@@ -1,4 +1,6 @@
 import "./Input.css"
+import PropTypes from "prop-types"
+
 
 const Input = ({ type = "text", label, onChange }) => {
 	return (
@@ -12,3 +14,9 @@ const Input = ({ type = "text", label, onChange }) => {
 }
 
 export default Input
+
+Input.propTypes = {
+	type: PropTypes.string,
+	label: PropTypes.string.isRequired,
+	onChange: PropTypes.func,
+}

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 const Searchbar = ({ onSearch }) => {
 	const onKeyUp = (e) => {
 		onSearch(e.target.value, e.key)
@@ -19,3 +21,7 @@ const Searchbar = ({ onSearch }) => {
 	)
 }
 export default Searchbar
+
+Searchbar.propTypes = {
+	onSearch: PropTypes.func.isRequired,
+}

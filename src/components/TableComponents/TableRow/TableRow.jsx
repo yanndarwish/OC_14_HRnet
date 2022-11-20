@@ -1,4 +1,6 @@
+import PropTypes from "prop-types"
 import "../TableHeader/TableHeader.css"
+
 
 const TableRow = ({ employee }) => {
 	return (
@@ -17,3 +19,7 @@ const TableRow = ({ employee }) => {
 }
 
 export default TableRow
+
+TableRow.propTypes = {
+	employee: PropTypes.object.isRequired,
+}

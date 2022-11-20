@@ -1,4 +1,6 @@
 import "./EntriesFilter.css"
+import PropTypes from "prop-types"
+
 
 const EntriesFilter = ({ onFilter }) => {
 	const handleChange = (e) => {
@@ -20,3 +22,7 @@ const EntriesFilter = ({ onFilter }) => {
 }
 
 export default EntriesFilter
+
+EntriesFilter.propTypes = {
+	onFilter: PropTypes.func.isRequired,
+}

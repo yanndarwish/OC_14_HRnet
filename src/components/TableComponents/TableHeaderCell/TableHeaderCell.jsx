@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import PropTypes from "prop-types"
 import arrow from "../../../assets/sort-arrow.svg"
 import arrowBlue from "../../../assets/sort-arrow-blue.svg"
 
@@ -41,3 +42,8 @@ const TableHeaderCell = ({ attribute, onSorting }) => {
 }
 
 export default TableHeaderCell
+
+TableHeaderCell.propTypes = {
+	attribute: PropTypes.object.isRequired,
+	onSorting: PropTypes.func.isRequired,
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import PropTypes from "prop-types"
 import "./SelectInput.css"
 import "../Input/Input.css"
 
@@ -12,7 +13,8 @@ const SelectInput = ({ label, data, onChange }) => {
 			container.style.height = "0"
 		} else {
 			container.classList.add("show")
-			container.style.height = data.length * 42 <= 300 ? `${data.length * 42}px` : `${300}px`
+			container.style.height =
+				data.length * 42 <= 300 ? `${data.length * 42}px` : `${300}px`
 		}
 	}
 
@@ -75,3 +77,9 @@ const SelectInput = ({ label, data, onChange }) => {
 }
 
 export default SelectInput
+
+SelectInput.propTypes = {
+	data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+	label: PropTypes.string.isRequired,
+	onChange: PropTypes.func,
+}

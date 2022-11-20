@@ -30,6 +30,7 @@ const Table = () => {
 	const [second, setSecond] = useState(0)
 	const dispatch = useDispatch()
 
+	// when sorting from the header cells
 	const onSorting = (value) => {
 		let arrayCopy = [...filteredEmployees]
 
@@ -37,6 +38,7 @@ const Table = () => {
 			arrayCopy.sort((a, b) => a.id - b.id)
 			dispatch(updateSorter(""))
 		} else {
+			// if date, reformat the date and apply specific filter 
 			if (value.toLowerCase().includes("date")) {
 				arrayCopy.sort((a, b) => {
 					a = a[value].split("/")
@@ -50,6 +52,7 @@ const Table = () => {
 					return a > b ? 1 : a < b ? -1 : 0
 				})
 			} else {
+				// else, sort normally
 				arrayCopy.sort((a, b) => {
 					return a[value] > b[value] ? 1 : b[value] > a[value] ? -1 : 0
 				})
@@ -60,9 +63,11 @@ const Table = () => {
 		dispatch(sortEmployees(arrayCopy))
 	}
 
-	const onFilter = (value = "") => {
+	// when modifying the "entries per page" number
+	const onFilter = (value) => {
 		dispatch(updateEntriesPerPage(value))
 
+		// slice the right portion from the array and update the page content
 		let slice = filteredEmployees.slice(
 			currentPage * value - value,
 			currentPage * value
@@ -75,7 +80,7 @@ const Table = () => {
 	const onSearch = (string, key) => {
 		let matches = []
 		const hay = key === "Backspace" ? employees : filteredEmployees
-		// find matches
+		// find matches in every properties of the employee object
 		hay.forEach((employee) => {
 			let str
 			const keys = Object.keys(employee)
@@ -88,6 +93,7 @@ const Table = () => {
 		dispatch(updateEmployees(matches))
 	}
 
+	// update the infos of entriesDisplayInfo component => "showing ... to ... of ..." (bottom left)
 	const computeEntriesStatus = () => {
 		if (filteredEmployees.length < entriesPerPage) {
 			setSecond(filteredEmployees.length)
@@ -118,7 +124,6 @@ const Table = () => {
 						attributes={employeeAttributeList}
 						onSorting={onSorting}
 					/>
-					{/* todo make row rendering dynamic */}
 					<tbody className="table-body">
 						{pageContent.map((employee) => (
 							<TableRow key={employee.id} employee={employee} />

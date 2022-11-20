@@ -1,4 +1,6 @@
 import "./EntriesDisplayInfo.css"
+import PropTypes from "prop-types"
+
 
 const EntriesDisplayInfo = ({ first, second, length }) => {
 
@@ -10,3 +12,9 @@ const EntriesDisplayInfo = ({ first, second, length }) => {
 }
 
 export default EntriesDisplayInfo
+
+EntriesDisplayInfo.propTypes = {
+	first: PropTypes.number.isRequired,
+	second: PropTypes.number.isRequired,
+	length: PropTypes.number.isRequired,
+}
