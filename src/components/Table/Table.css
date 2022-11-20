@@ -1,0 +1,36 @@
+.table-top,
+.table-bottom {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block:24px;
+}
+
+.table-wrapper {
+    overflow: scroll;
+    width:100%;
+
+}
+
+.table-body .table-row {
+    height:60px;
+    border-bottom: 2px solid var(--clr-grey-1);
+    transition:0.4s;
+    -webkit-transition:0.4s;
+    -moz-transition:0.4s;
+    -ms-transition:0.4s;
+    -o-transition:0.4s;
+}
+
+.table-body .table-row:hover {
+    border-color:  var(--clr-primary);
+    background: hsl(212, 31%, 15%);
+
+
+}
+
+/* .table-body .table-row:nth-child(even) { */
+    /* background-color: hsl(217, 80%, 32%, 0.3); */
+    /* background: hsl(212, 31%, 15%); */
+
+/* } */

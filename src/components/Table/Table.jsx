@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { employeeAttributeList } from "../../data/employeeAttributeList"
 import TableHeader from "../TableComponents/TableHeader/TableHeader"
 import TableRow from "../TableComponents/TableRow/TableRow"
-import { useSelector } from "react-redux"
 import Searchbar from "../TableComponents/Searchbar/Searchbar"
 import EntriesFilter from "../TableComponents/EntriesFilter/EntriesFilter"
 import EntriesDisplayInfo from "../TableComponents/EntriesDisplayInfo/EntrieDisplayInfo"
 import Pager from "../TableComponents/Pager/Pager"
-import { useDispatch } from "react-redux"
+import { sortEmployees } from "../../redux/features/employeesSlice"
 import {
 	updateEmployees,
 	updateEntriesPerPage,
 	updatePageContent,
 	updateSorter,
 } from "../../redux/features/tableSlice"
-import { sortEmployees } from "../../redux/features/employeesSlice"
+import "./Table.css"
 
 const Table = () => {
 	const employees = useSelector((state) => state.employees.employees)
@@ -108,23 +108,32 @@ const Table = () => {
 
 	return (
 		<div className="table-container">
-			<EntriesFilter onFilter={onFilter} />
-			<Searchbar onSearch={onSearch} />
-			<table className="table">
-				<TableHeader attributes={employeeAttributeList} onSorting={onSorting} />
-				{/* todo make row rendering dynamic */}
-				<tbody className="table-body">
-					{pageContent.map((employee) => (
-						<TableRow key={employee.id} employee={employee} />
-					))}
-				</tbody>
-			</table>
-			<EntriesDisplayInfo
-				first={first}
-				second={second}
-				length={filteredEmployees.length}
-			/>
-			<Pager pageAmount={pageAmount} />
+			<div className="table-top">
+				<EntriesFilter onFilter={onFilter} />
+				<Searchbar onSearch={onSearch} />
+			</div>
+			<div className="table-wrapper">
+				<table className="table">
+					<TableHeader
+						attributes={employeeAttributeList}
+						onSorting={onSorting}
+					/>
+					{/* todo make row rendering dynamic */}
+					<tbody className="table-body">
+						{pageContent.map((employee) => (
+							<TableRow key={employee.id} employee={employee} />
+						))}
+					</tbody>
+				</table>
+			</div>
+			<div className="table-bottom">
+				<EntriesDisplayInfo
+					first={first}
+					second={second}
+					length={filteredEmployees.length}
+				/>
+				<Pager pageAmount={pageAmount} />
+			</div>
 		</div>
 	)
 }
