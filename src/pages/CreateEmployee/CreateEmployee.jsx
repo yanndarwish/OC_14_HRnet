@@ -5,23 +5,29 @@ import Button from "../../components/Button/Button"
 import { departments } from "../../data/departmentList"
 import { stateList } from "../../data/stateList"
 import { usePostEmployeeMutation } from "../../redux/services/api"
+import { Modal } from "modal-rjs"
 import "./CreateEmployee.css"
 
 const CreateEmployee = () => {
 	const [employee, setEmployee] = useState({})
 	const [addEmployee, res] = usePostEmployeeMutation()
+	const [isOpen, setIsOpen] = useState(false)
 
 	const isError = res.isError
-	// todo : set error conditionnal rendering in modal
+
 	const onSave = async (e) => {
 		e.preventDefault()
 		await addEmployee(employee)
 	}
 
+	const handleClick = () => {
+		setIsOpen(!isOpen)
+	}
+
 	return (
 		<>
 			<h1 className="main-title">Create Employee</h1>
-			<form className="form" onSubmit={e => onSave(e)}>
+			<form className="form" onSubmit={(e) => onSave(e)}>
 				<Input
 					label="First Name"
 					onChange={(value) => {
@@ -80,8 +86,9 @@ const CreateEmployee = () => {
 						setEmployee({ ...employee, department: value })
 					}}
 				/>
-				<Button label="Save" />
+				<Button label="Save" onClick={handleClick}/>
 				{isError && <div>ERROR in the posting</div>}
+				<Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Employee Created" titleClassName="title"/>
 			</form>
 		</>
 	)
