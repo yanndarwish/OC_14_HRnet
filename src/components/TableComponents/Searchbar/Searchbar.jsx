@@ -4,12 +4,18 @@ const Searchbar = ({ onSearch }) => {
 	}
 
 	return (
-		<input
-			type="text"
-			id="searchbar"
-			onKeyUp={(e) => onKeyUp(e)}
-			placeholder="Search ..."
-		/>
+		<div className="input-container">
+			<input
+				type="text"
+				id="searchbar"
+				className="input"
+				onKeyUp={(e) => onKeyUp(e)}
+				required
+			/>
+			<label htmlFor="searchbar" className="input-label">
+				Search
+			</label>
+		</div>
 	)
 }
 export default Searchbar
