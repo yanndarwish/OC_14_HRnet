@@ -18,12 +18,25 @@ const CreateEmployee = () => {
 	const onSave = async (e) => {
 		e.preventDefault()
 		setIsOpen(true)
-		
-		const inputs = document.querySelectorAll('.input')
-		inputs.forEach(input => {
+		resetInputs()
+		await addEmployee(employee)
+	}
+
+	const resetInputs = () => {
+		const inputs = document.querySelectorAll(".input")
+		inputs.forEach((input) => {
 			input.value = ""
 		})
-		await addEmployee(employee)
+
+		const selects = document.querySelectorAll(".selected-input")
+		selects.forEach((select) => {
+			select.innerText = ""
+		})
+		
+		const labels = ["State", "Department"]
+		labels.forEach(label => {
+			document.querySelector(`.label-${label}`).classList.remove('valid')
+		})
 	}
 
 	const BodyContent = () => {
