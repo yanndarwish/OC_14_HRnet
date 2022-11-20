@@ -13,6 +13,7 @@ const Searchbar = ({ onSearch }) => {
 				className="input"
 				onKeyUp={(e) => onKeyUp(e)}
 				required
+				autoComplete="off"
 			/>
 			<label htmlFor="searchbar" className="input-label">
 				Search
