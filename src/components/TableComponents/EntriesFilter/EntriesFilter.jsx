@@ -1,12 +1,14 @@
+import "./EntriesFilter.css"
+
 const EntriesFilter = ({ onFilter }) => {
 	const handleChange = (e) => {
 		onFilter(parseInt(e.target.value))
 	}
 
 	return (
-		<div className="entries-filter">
+		<div className="entries-filter input-container">
 			<span>Show</span>
-			<select onChange={(e) => handleChange(e)}>
+			<select onChange={(e) => handleChange(e)} className="input">
 				<option value="10">10</option>
 				<option value="25">25</option>
 				<option value="50">50</option>

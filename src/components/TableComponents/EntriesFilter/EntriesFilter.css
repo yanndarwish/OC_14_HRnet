@@ -1,0 +1,11 @@
+.entries-filter {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.entries-filter.input-container .input {
+	width: fit-content;
+	height: fit-content;
+    padding:12px;
+}
