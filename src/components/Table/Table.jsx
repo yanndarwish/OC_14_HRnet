@@ -83,6 +83,7 @@ const Table = () => {
 	// update the infos of entriesDisplayInfo component => "showing ... to ... of ..." (bottom left)
 	const computeEntriesStatus = () => {
 		if (filteredEmployees.length < entriesPerPage) {
+			setFirst(1)
 			setSecond(filteredEmployees.length)
 		} else {
 			setFirst(currentPage * entriesPerPage - entriesPerPage + 1)
