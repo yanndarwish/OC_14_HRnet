@@ -34,30 +34,15 @@ const Table = () => {
 	// when sorting from the header cells
 	const onSorting = (value) => {
 		let arrayCopy = [...filteredEmployees]
-
+		//  if is already sorted, then sort by ID
 		if (sorter === value) {
 			arrayCopy.sort((a, b) => a.id - b.id)
 			dispatch(updateSorter(""))
 		} else {
-			// if date, reformat the date and apply specific filter 
-			if (value.toLowerCase().includes("date")) {
-				arrayCopy.sort((a, b) => {
-					a = a[value].split("/")
-					const monthA = a.splice(0, 1)[0]
-					a.splice(1, 0, monthA)
-					a = a.reverse().join("")
-					b = b[value].split("/")
-					const monthB = b.splice(0, 1)[0]
-					b.splice(1, 0, monthB)
-					b = b.reverse().join("")
-					return a > b ? 1 : a < b ? -1 : 0
-				})
-			} else {
-				// else, sort normally
-				arrayCopy.sort((a, b) => {
-					return a[value] > b[value] ? 1 : b[value] > a[value] ? -1 : 0
-				})
-			}
+			// else sort by value
+			arrayCopy.sort((a, b) => {
+				return a[value] > b[value] ? 1 : b[value] > a[value] ? -1 : 0
+			})
 			dispatch(updateSorter(value))
 		}
 		dispatch(updateEmployees(arrayCopy))
@@ -76,7 +61,6 @@ const Table = () => {
 
 		dispatch(updatePageContent(slice))
 		setPageAmount(Math.ceil(filteredEmployees.length / entriesPerPage))
-
 	}
 
 	const onSearch = (string, key) => {
