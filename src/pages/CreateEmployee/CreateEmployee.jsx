@@ -10,24 +10,34 @@ import "./CreateEmployee.css"
 
 const CreateEmployee = () => {
 	const [employee, setEmployee] = useState({})
-	const [addEmployee, res] = usePostEmployeeMutation()
 	const [isOpen, setIsOpen] = useState(false)
+	const [addEmployee, res] = usePostEmployeeMutation()
 
 	const isError = res.isError
 
 	const onSave = async (e) => {
 		e.preventDefault()
+		setIsOpen(true)
+		
+		const inputs = document.querySelectorAll('.input')
+		inputs.forEach(input => {
+			input.value = ""
+		})
 		await addEmployee(employee)
 	}
 
-	const handleClick = () => {
-		setIsOpen(!isOpen)
+	const BodyContent = () => {
+		return (
+			<div>
+				{employee.firstName} {employee.lastName} has been added to our list!
+			</div>
+		)
 	}
 
 	return (
 		<>
 			<h1 className="main-title">Create Employee</h1>
-			<form className="form" onSubmit={(e) => onSave(e)} autocomplete="off">
+			<form className="form" onSubmit={(e) => onSave(e)} autoComplete="off">
 				<Input
 					label="First Name"
 					onChange={(value) => {
@@ -86,13 +96,15 @@ const CreateEmployee = () => {
 						setEmployee({ ...employee, department: value })
 					}}
 				/>
-				<Button label="Save" onClick={handleClick} />
+				<Button label="Save" />
 				{isError && <div>ERROR in the posting</div>}
 				<Modal
 					isOpen={isOpen}
 					setIsOpen={setIsOpen}
 					title="Employee Created"
-					titleClassName="title"
+					titleClassName="dialog-title"
+					bodyContent={<BodyContent />}
+					bodyClassName="dialog-body-content"
 				/>
 			</form>
 		</>
