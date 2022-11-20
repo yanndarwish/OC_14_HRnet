@@ -76,7 +76,7 @@ const CreateEmployee = () => {
 							setEmployee({ ...employee, state: value })
 						}}
 					/>
-					<Input label="Zip Code" />
+					<Input type="number" label="Zip Code" />
 				</fieldset>
 				{/* select input */}
 				<SelectInput
