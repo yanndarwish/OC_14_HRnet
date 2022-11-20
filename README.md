@@ -13,7 +13,7 @@ npm run server
 ```
 
 It launches the Back End json-server:
-Open [http://localhost:3000/employees](http://localhost:3000/employees) to view the data your browser.
+Open [http://localhost:3000/employees](http://localhost:3000/employees) to view the data in your browser.
 
 Now you can start the React App with:
 
