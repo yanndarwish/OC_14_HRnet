@@ -9,6 +9,7 @@ import EntriesDisplayInfo from "../TableComponents/EntriesDisplayInfo/EntrieDisp
 import Pager from "../TableComponents/Pager/Pager"
 import { sortEmployees } from "../../redux/features/employeesSlice"
 import {
+	updateCurrentPage,
 	updateEmployees,
 	updateEntriesPerPage,
 	updatePageContent,
@@ -75,9 +76,11 @@ const Table = () => {
 
 		dispatch(updatePageContent(slice))
 		setPageAmount(Math.ceil(filteredEmployees.length / entriesPerPage))
+
 	}
 
 	const onSearch = (string, key) => {
+		dispatch(updateCurrentPage(1))
 		let matches = []
 		const hay = key === "Backspace" ? employees : filteredEmployees
 		// find matches in every properties of the employee object
