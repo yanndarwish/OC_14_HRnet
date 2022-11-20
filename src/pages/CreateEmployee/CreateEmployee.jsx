@@ -32,10 +32,10 @@ const CreateEmployee = () => {
 		selects.forEach((select) => {
 			select.innerText = ""
 		})
-		
+
 		const labels = ["State", "Department"]
-		labels.forEach(label => {
-			document.querySelector(`.label-${label}`).classList.remove('valid')
+		labels.forEach((label) => {
+			document.querySelector(`.label-${label}`).classList.remove("valid")
 		})
 	}
 
@@ -115,15 +115,16 @@ const CreateEmployee = () => {
 				/>
 				<Button label="Save" />
 				{isError && <div>ERROR in the posting</div>}
-				<Modal
-					isOpen={isOpen}
-					setIsOpen={setIsOpen}
-					title="Employee Created"
-					titleClassName="dialog-title"
-					bodyContent={<BodyContent />}
-					bodyClassName="dialog-body-content"
-				/>
 			</form>
+			<Modal
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+				title="Employee Created"
+				titleClassName="dialog-title"
+				bodyContent={<BodyContent />}
+				bodyClassName="dialog-body-content"
+				closeColor="white"
+			/>
 		</>
 	)
 }
