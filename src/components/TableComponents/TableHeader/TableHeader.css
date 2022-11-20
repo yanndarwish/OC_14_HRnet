@@ -7,14 +7,12 @@
     display:flex;
 }
 
-.table-header-item,
-.table-cell {
+.table-header-item {
     width:100%;
-    display:grid;
-    grid-template-columns: repeat(9, 1fr);
+    display:flex;
     align-items: center;
     min-width:130px;
-    padding-left:24px;
+    padding-inline:24px;
     padding-block: 6px;;
 }
 

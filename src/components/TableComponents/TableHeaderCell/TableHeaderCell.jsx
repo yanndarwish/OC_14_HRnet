@@ -13,7 +13,7 @@ const TableHeaderCell = ({ attribute, onSorting }) => {
 	return (
 		<th
 			value={attribute.value}
-			className="table-cell table-header-item"
+			className="table-header-item"
 			onClick={() => {
 				handleClick(attribute.value)
 			}}

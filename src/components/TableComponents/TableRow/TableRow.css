@@ -1,0 +1,8 @@
+.table-cell {
+    width:100%;
+    display:flex;
+    align-items: center;
+    min-width:130px;
+    padding-inline:24px;
+    padding-block: 6px;;
+}
