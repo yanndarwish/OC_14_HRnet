@@ -27,7 +27,7 @@ const CreateEmployee = () => {
 	return (
 		<>
 			<h1 className="main-title">Create Employee</h1>
-			<form className="form" onSubmit={(e) => onSave(e)}>
+			<form className="form" onSubmit={(e) => onSave(e)} autocomplete="off">
 				<Input
 					label="First Name"
 					onChange={(value) => {
@@ -86,9 +86,14 @@ const CreateEmployee = () => {
 						setEmployee({ ...employee, department: value })
 					}}
 				/>
-				<Button label="Save" onClick={handleClick}/>
+				<Button label="Save" onClick={handleClick} />
 				{isError && <div>ERROR in the posting</div>}
-				<Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Employee Created" titleClassName="title"/>
+				<Modal
+					isOpen={isOpen}
+					setIsOpen={setIsOpen}
+					title="Employee Created"
+					titleClassName="title"
+				/>
 			</form>
 		</>
 	)
