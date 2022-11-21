@@ -33,8 +33,9 @@
 
 }
 
-/* .table-body .table-row:nth-child(even) { */
-    /* background-color: hsl(217, 80%, 32%, 0.3); */
-    /* background: hsl(212, 31%, 15%); */
-
-/* } */
+@media (max-width: 767px) {
+	.table-top, .table-bottom {
+		flex-direction: column;
+		gap: 2rem;
+	}
+}

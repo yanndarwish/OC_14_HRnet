@@ -7,7 +7,7 @@ const EmployeeList = () => {
 
 	return (
 		<>
-			<h1 className="main-title slide-in two">Employee List</h1>
+			<h1 className="main-title">Employee List</h1>
 			{error ? (
 				<>Oh no, there was an error</>
 			) : isLoading ? (

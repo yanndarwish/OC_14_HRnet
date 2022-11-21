@@ -5,7 +5,7 @@ const Header = () => {
     const path = useHref()
 
     return (
-			<header className="header slide-in one">
+			<header className="header">
 				<div className="brand">HRnet</div>
 				<nav className="primary-nav">
 					{path === "/" ? (

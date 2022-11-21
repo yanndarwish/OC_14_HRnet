@@ -49,9 +49,9 @@ const CreateEmployee = () => {
 
 	return (
 		<>
-			<h1 className="main-title slide-in two">Create Employee</h1>
+			<h1 className="main-title">Create Employee</h1>
 			<form
-				className="form slide-in three"
+				className="form"
 				onSubmit={(e) => onSave(e)}
 				autoComplete="off"
 			>

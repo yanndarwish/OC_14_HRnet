@@ -20,33 +20,3 @@ a {
 	text-decoration: none;
 	color: black;
 }
-
-.slide-in {
-	z-index:10;
-	animation: slide-in 1s ease-in-out both;
-	-webkit-animation: slide-in 1s ease-in-out both;
-}
-
-.two {
-    animation-delay: 0.5s;
-}
-
-.three {
-    animation-delay: 0.8s;
-}
-
-@keyframes slide-in {
-	0% {
-        opacity: 0;
-        transform: translateY(80px);
-        -webkit-transform: translateY(80px);
-        -moz-transform: translateY(80px);
-        -ms-transform: translateY(80px);
-        -o-transform: translateY(80px);
-}   
-	100% {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
