@@ -1,10 +1,14 @@
 import "./EntriesFilter.css"
+import { useSelector } from "react-redux"
 import PropTypes from "prop-types"
 
 
 const EntriesFilter = ({ onFilter }) => {
+	const filteredEmployees = useSelector(state => state.table.filteredEmployees)
+	const currentPage = useSelector(state => state.table.currentPage)
+	
 	const handleChange = (e) => {
-		onFilter(parseInt(e.target.value))
+		onFilter(filteredEmployees, currentPage, parseInt(e.target.value))
 	}
 
 	return (

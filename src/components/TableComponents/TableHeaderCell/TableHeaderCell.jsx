@@ -5,9 +5,10 @@ import arrowBlue from "../../../assets/sort-arrow-blue.svg"
 
 const TableHeaderCell = ({ attribute, onSorting }) => {
 	const sorter = useSelector((state) => state.table.sorter)
+	const filteredEmployees = useSelector((state) => state.table.filteredEmployees)
 
 	const handleClick = (value) => {
-		onSorting(value)
+		onSorting(value, sorter, filteredEmployees)
 	}
 
 	return (

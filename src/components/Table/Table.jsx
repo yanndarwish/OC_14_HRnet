@@ -18,11 +18,9 @@ import {
 import "./Table.css"
 
 const Table = () => {
-	const employees = useSelector((state) => state.employees.employees)
 	const currentPage = useSelector((state) => state.table.currentPage)
 	const entriesPerPage = useSelector((state) => state.table.entriesPerPage)
 	const pageContent = useSelector((state) => state.table.pageContent)
-	const sorter = useSelector((state) => state.table.sorter)
 	const filteredEmployees = useSelector(
 		(state) => state.table.filteredEmployees
 	)
@@ -32,8 +30,9 @@ const Table = () => {
 	const dispatch = useDispatch()
 
 	// when sorting from the header cells
-	const onSorting = (value) => {
-		let arrayCopy = [...filteredEmployees]
+	// sorts the emloyees arrays based on the actual sorter
+	const onSorting = (value, sorter, filteredEmployees) => {
+		const arrayCopy = [...filteredEmployees]
 		//  if is already sorted, then sort by ID
 		if (sorter === value) {
 			arrayCopy.sort((a, b) => a.id - b.id)
@@ -50,25 +49,27 @@ const Table = () => {
 	}
 
 	// when modifying the "entries per page" number
-	const onFilter = (value) => {
+	// updates the page content based on the current page, the number of items per page and the employees array
+	const onFilter = (filteredEmployees, currentPage, value) => {
 		dispatch(updateEntriesPerPage(value))
-
 		// slice the right portion from the array and update the page content
-		let slice = filteredEmployees.slice(
+		const slice = filteredEmployees.slice(
 			currentPage * value - value,
 			currentPage * value
 		)
 
 		dispatch(updatePageContent(slice))
-		setPageAmount(Math.ceil(filteredEmployees.length / entriesPerPage))
+		setPageAmount(Math.ceil(filteredEmployees.length / value))
 	}
 
-	const onSearch = (string, key) => {
+	// when searching in the searchbar
+	// update emloyees array with the matches
+	const onSearch = (string, employees) => {
 		dispatch(updateCurrentPage(1))
 		let matches = []
-		const hay = key === "Backspace" ? employees : filteredEmployees
+
 		// find matches in every properties of the employee object
-		hay.forEach((employee) => {
+		employees.forEach((employee) => {
 			let str
 			const keys = Object.keys(employee)
 			keys.forEach((key) => {
@@ -81,7 +82,12 @@ const Table = () => {
 	}
 
 	// update the infos of entriesDisplayInfo component => "showing ... to ... of ..." (bottom left)
-	const computeEntriesStatus = () => {
+	// based on the current page, the number of items per page and the employees array
+	const computeEntriesStatus = (
+		filteredEmployees,
+		currentPage,
+		entriesPerPage
+	) => {
 		if (filteredEmployees.length < entriesPerPage) {
 			setFirst(1)
 			setSecond(filteredEmployees.length)
@@ -96,8 +102,8 @@ const Table = () => {
 	}
 
 	useEffect(() => {
-		onFilter(entriesPerPage)
-		computeEntriesStatus()
+		onFilter(filteredEmployees, currentPage, entriesPerPage)
+		computeEntriesStatus(filteredEmployees, currentPage, entriesPerPage)
 	}, [currentPage, entriesPerPage, filteredEmployees])
 
 	return (

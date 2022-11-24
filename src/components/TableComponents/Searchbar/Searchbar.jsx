@@ -1,8 +1,14 @@
+import { useSelector } from "react-redux"
 import PropTypes from "prop-types"
 
 const Searchbar = ({ onSearch }) => {
+	const employees = useSelector((state) => state.employees.employees)
+	const filteredEmployees = useSelector(
+		(state) => state.table.filteredEmployees
+	)
+
 	const onKeyUp = (e) => {
-		onSearch(e.target.value, e.key)
+		e.key === "Backspace" ? onSearch(e.target.value, employees) : onSearch(e.target.value, filteredEmployees)
 	}
 
 	return (
