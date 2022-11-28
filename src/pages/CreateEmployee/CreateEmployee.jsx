@@ -40,7 +40,9 @@ const CreateEmployee = () => {
 	}
 
 	const BodyContent = () => {
-		return (
+		return isError ? (
+			<div>ERROR in the posting</div>
+		) : (
 			<div>
 				{employee.firstName} {employee.lastName} has been added to our list!
 			</div>
@@ -50,11 +52,7 @@ const CreateEmployee = () => {
 	return (
 		<>
 			<h1 className="main-title">Create Employee</h1>
-			<form
-				className="form"
-				onSubmit={(e) => onSave(e)}
-				autoComplete="off"
-			>
+			<form className="form" onSubmit={(e) => onSave(e)} autoComplete="off">
 				<Input
 					label="First Name"
 					onChange={(value) => {
@@ -114,7 +112,6 @@ const CreateEmployee = () => {
 					}}
 				/>
 				<Button label="Save" />
-				{isError && <div>ERROR in the posting</div>}
 			</form>
 			<Modal
 				isOpen={isOpen}
